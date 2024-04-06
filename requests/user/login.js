@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const User = require('../../models/User');
 
 const dbUrl = 'mongodb://localhost:27017/music_db';
 const connectionParams = {
