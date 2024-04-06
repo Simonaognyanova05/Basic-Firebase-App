@@ -19,6 +19,7 @@ const adminLoginController = require('./src/admin/login');
 const adminAddController = require('./src/admin/addAdmin');
 const addMusicController = require('./src/admin/addMusic');
 const { addAdmin } = require('./requests/admin/addAdmin');
+const { loginAdmin } = require('./requests/admin/adminLogin');
 
 const app = express();
 
@@ -59,6 +60,9 @@ app.get('/admin/addMusic', addMusicController);
 
 app.post('/addAdmin', async (req, res) => {
     await addAdmin(req, res);
+});
+app.post('/adminLogin', async (req, res) => {
+    await loginAdmin(req, res)
 })
 
 app.listen(3000);
