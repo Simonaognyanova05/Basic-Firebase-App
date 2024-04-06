@@ -10,6 +10,7 @@ const loginController = require('./src/user/login');
 const registerController = require('./src/user/register');
 const playlistsController = require('./src/user/yourPlaylists');
 const profileController = require('./src/user/profile');
+const newPlaylist = require('./src/user/newPlaylist');
 const { registerUser } = require('./requests/register');
 const { loginUser } = require('./requests/login');
 
@@ -36,6 +37,8 @@ app.get('/login', loginController);
 app.get('/register', registerController);
 app.get('/yourPlaylists', playlistsController);
 app.get('/profile', profileController);
+app.get('/createPlaylist', newPlaylist);
+
 
 app.post('/regitserReq', async(req, res) => {
     await registerUser(req, res);
