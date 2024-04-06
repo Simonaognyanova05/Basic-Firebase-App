@@ -4,12 +4,12 @@ const expressSession = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require('path');
 
-const homeController = require('./src/home');
-const artistsController = require('./src/artists');
-const loginController = require('./src/login');
-const registerController = require('./src/register');
-const playlistsController = require('./src/yourPlaylists');
-const profileController = require('./src/profile');
+const homeController = require('./src/user/home');
+const artistsController = require('./src/user/artists');
+const loginController = require('./src/user/login');
+const registerController = require('./src/user/register');
+const playlistsController = require('./src/user/yourPlaylists');
+const profileController = require('./src/user/profile');
 const { registerUser } = require('./requests/register');
 const { loginUser } = require('./requests/login');
 
