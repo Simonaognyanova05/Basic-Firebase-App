@@ -12,9 +12,10 @@ async function addMusic(req, res){
 
     const { title, singer, ganre, URL } = req.body;
 
+    let URL1 = URL.split('=')[1];
     try{
         const music = new Music({
-            title, singer, ganre, URL
+            title, singer, ganre, URL: URL1
         });
 
         await music.save();
