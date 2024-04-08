@@ -11,7 +11,6 @@ const registerController = require('./src/user/register');
 const playlistsController = require('./src/user/yourPlaylists');
 const profileController = require('./src/user/profile');
 const newPlaylist = require('./src/user/newPlaylist');
-const addPlaylist = require('./src/user/addPlaylist');
 const { registerUser } = require('./requests/user/register');
 const { loginUser } = require('./requests/user/login');
 
@@ -22,6 +21,7 @@ const addMusicController = require('./src/admin/addMusic');
 const { addAdmin } = require('./requests/admin/addAdmin');
 const { loginAdmin } = require('./requests/admin/adminLogin');
 const { addMusic } = require('./requests/admin/addMusic');
+const { createPlaylist } = require('./requests/user/createPlaylist');
 
 const app = express();
 
@@ -47,13 +47,15 @@ app.get('/register', registerController);
 app.get('/yourPlaylists', playlistsController);
 app.get('/profile', profileController);
 app.get('/createPlaylist', newPlaylist);
-app.get('/createPlaylist', addPlaylist);
 
 app.post('/regitserReq', async(req, res) => {
     await registerUser(req, res);
 });
 app.post('/loginReq', async(req, res) => {
     await loginUser(req, res);
+})
+app.post('/createPlaylist', async(req, res) => {
+    await createPlaylist(req, res);
 })
 
 app.get('/admin', adminHomeController);
