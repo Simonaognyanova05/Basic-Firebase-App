@@ -23,6 +23,7 @@ const { loginAdmin } = require('./requests/admin/adminLogin');
 const { addMusic } = require('./requests/admin/addMusic');
 const { createPlaylist } = require('./requests/user/createPlaylist');
 const logout = require('./src/user/logout');
+const logoutAdmin = require('./src/admin/logoutAdmin');
 
 const app = express();
 
@@ -64,6 +65,7 @@ app.get('/admin', adminHomeController);
 app.get('/admin/login', adminLoginController);
 app.get('/admin/addAdmin', adminAddController);
 app.get('/admin/addMusic', addMusicController);
+app.get('/admin/logout', logoutAdmin);
 
 app.post('/addAdmin', async (req, res) => {
     await addAdmin(req, res);
