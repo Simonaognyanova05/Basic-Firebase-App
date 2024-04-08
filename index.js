@@ -49,7 +49,6 @@ app.get('/register', registerController);
 app.get('/yourPlaylists', playlistsController);
 app.get('/profile', profileController);
 app.get('/createPlaylist', newPlaylist);
-
 app.post('/regitserReq', async(req, res) => {
     await registerUser(req, res);
 });
