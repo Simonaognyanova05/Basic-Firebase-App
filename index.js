@@ -45,7 +45,7 @@ app.set('view engine', 'hbs');
 app.use('/content', express.static('static'));
 
 app.get('/', homeController);
-app.get('/artists', artistsController);
+app.get('/artists', async(req, res) => {await artistsController(req, res)});
 app.get('/login', loginController);
 app.get('/register', registerController);
 app.get('/yourPlaylists', playlistsController);
