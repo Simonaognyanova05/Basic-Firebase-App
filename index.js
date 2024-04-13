@@ -64,7 +64,9 @@ app.get('/logout', logout);
 app.get('/musics/video/:videoId', async(req, res) => { await addToPlaylistForm(req, res) })
 app.post('/addMusicToPlaylist', async(req, res) => {
     await addToPlaylist(req, res);
-})
+});
+
+
 app.get('/admin', adminHomeController);
 app.get('/admin/login', adminLoginController);
 app.get('/admin/addAdmin', adminAddController);
