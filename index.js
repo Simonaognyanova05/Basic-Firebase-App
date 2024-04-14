@@ -26,6 +26,8 @@ const logout = require('./src/user/logout');
 const logoutAdmin = require('./src/admin/logoutAdmin');
 const addToPlaylistForm = require('./src/user/addToPlaylistForm');
 const { addToPlaylist } = require('./requests/user/addToPlaylist');
+const { searchMusic } = require('./requests/user/searchMusic');
+const musicIntoPlaylist = require('./src/user/musicIntoPlaylist');
 
 const app = express();
 
@@ -65,7 +67,12 @@ app.get('/musics/video/:videoId', async(req, res) => { await addToPlaylistForm(r
 app.post('/addMusicToPlaylist', async(req, res) => {
     await addToPlaylist(req, res);
 });
-
+app.post('/searchMusic', async(req, res) => {
+    await searchMusic(req, res);
+})
+app.get('/findedMusic', async (req, res) => {
+    await musicIntoPlaylist(req, res);
+})
 
 app.get('/admin', adminHomeController);
 app.get('/admin/login', adminLoginController);
