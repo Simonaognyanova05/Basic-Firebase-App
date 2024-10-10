@@ -5,6 +5,7 @@ const { loginAdmin } = require('./services/loginAdmin');
 const { createTopic } = require('./services/createTopic');
 const { getTopics } = require('./services/getTopics');
 const { updateTopic } = require('./services/updateTopic');
+const { deleteTopic } = require('./services/deleteTopic');
 
 
 
@@ -33,4 +34,8 @@ app.get('/topics', async (req, res) => {
 app.put('/topics/:topicId', async (req, res) => {
     await updateTopic(req, res);
 });
+
+app.delete('/topics/:topicId', async (req, res) => {
+    await deleteTopic(req, res);
+})
 app.listen(2000);
