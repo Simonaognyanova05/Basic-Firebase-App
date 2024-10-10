@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const adminSchema = new mongoose.Schema({
-    username: { type: String, required: true },
-    hashedPass: { type: String, required: true },
+    username: { type: String, require: true },
+    hashedPass: { type: String, require: true },
 });
 
 const Admin = mongoose.model('Admin', adminSchema);
