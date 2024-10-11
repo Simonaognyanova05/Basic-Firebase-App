@@ -27,7 +27,8 @@ export default function Login() {
 
         if (data.status === 200) {
             alert('Успешно влизане');
-            onLogin(data);
+            let newData = await data.json();
+            onLogin(newData);
             navigate('/');
         }
 
