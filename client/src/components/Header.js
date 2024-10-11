@@ -7,6 +7,7 @@ export default function Header() {
     const adminLinks = (
         <>
             <li><Link to="/create">Създаване</Link></li>
+            <li><Link to="/logout">Излизане</Link></li>
             <p>{admin.username}</p>
         </>
     );
