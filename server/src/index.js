@@ -7,8 +7,6 @@ const { getTopics } = require('./services/getTopics');
 const { updateTopic } = require('./services/updateTopic');
 const { deleteTopic } = require('./services/deleteTopic');
 
-
-
 const app = express();
 
 app.use(cors());
