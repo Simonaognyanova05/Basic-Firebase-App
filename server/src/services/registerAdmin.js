@@ -15,6 +15,11 @@ async function registerAdmin(req, res) {
     const { username, password } = req.body;
 
     try {
+        const existedAdmin = await Admin.find({ username });
+
+        if (existedAdmin) {
+            return res.status(409).json();
+        }
         const hashedPass = await bcrypt.hash(password, 10);
 
         const admin = new Admin({

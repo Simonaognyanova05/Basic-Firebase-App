@@ -17,13 +17,13 @@ async function loginAdmin(req, res) {
         const admin = await Admin.findOne({ username });
 
         if (!admin) {
-            return res.staus(400).json();
+            return res.status(400).json();
         }
 
         const comparedPasswords = await bcrypt.compare(password, admin.hashedPass);
 
         if (!comparedPasswords) {
-            return res.staus(401).json();
+            return res.status(401).json();
         }
 
         return res.status(200).json({ _id: admin._id, username: admin.username });
