@@ -15,7 +15,7 @@ async function registerAdmin(req, res) {
     const { username, password } = req.body;
 
     try {
-        const existedAdmin = await Admin.find({ username });
+        const existedAdmin = await Admin.findOne({ username });
 
         if (existedAdmin) {
             return res.status(409).json();
