@@ -3,7 +3,7 @@ import Home from './components/Home';
 import Header from './components/Header';
 import Create from './components/Create';
 import Register from './components/Register';
-import Topics from './components/Topics';
+import Topics from './components/Topics/Topics';
 import Login from './components/Login';
 import Update from './components/Update';
 import Logout from './components/Logout';
