@@ -12,22 +12,32 @@ function App() {
 
   useEffect(() => {
     const getMovieList = async () => {
-      try{
+      try {
         const data = await getDocs(moviesCollectionRef);
-        const filteredData = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
-        console.log(filteredData);
-        
-      }catch(e){
+        const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        setMovieList(filteredData);
+      } catch (e) {
         console.log(e);
       }
     }
 
-    getMovieList(); 
+    getMovieList();
   }, [])
 
   return (
     <h1>
       <Auth />
+
+      <div>
+        {movieList.map(movie => (
+          <div>
+            <h1>{movie.title}</h1>
+            <p>Date: {movie.releaseDate}</p>
+            <p>Oskar: {movie.receivedAnOskar}</p>
+
+          </div>
+        ))}
+      </div>
     </h1>
   );
 }
