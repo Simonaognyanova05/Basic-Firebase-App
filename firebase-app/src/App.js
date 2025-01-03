@@ -3,7 +3,7 @@ import './App.css';
 import { Auth } from './components/auth.js';
 import { db } from './config/firebase.js';
 import { useEffect, useState } from 'react';
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 
 function App() {
   const [movieList, setMovieList] = useState([]);
@@ -24,19 +24,25 @@ function App() {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
+
+  const deleteMovie = async (id) => {
+    const movieDoc = doc(db, "movies", id);
+    await deleteDoc(movieDoc);
+  };
+
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [movieList]);
 
   const onSumbitMovie = async () => {
     try {
       await addDoc(moviesCollectionRef, { title: newMovieTitle, releaseDate: newReleaseDate, receivedAnOskar: isNewMovieOskar });
-      getMovieList();
+
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
     <>
@@ -60,6 +66,7 @@ function App() {
             <p>Date: {movie.releaseDate}</p>
             <p>Oskar: {movie.receivedAnOskar}</p>
 
+            <button onClick={() => deleteMovie(movie.id)}>Delete Movie</button>
           </div>
         ))}
       </div>
