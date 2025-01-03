@@ -16,32 +16,34 @@ function App() {
 
   const moviesCollectionRef = collection(db, "movies");
 
-  useEffect(() => {
-    const getMovieList = async () => {
-      try {
-        const data = await getDocs(moviesCollectionRef);
-        const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        setMovieList(filteredData);
-      } catch (e) {
-        console.log(e);
-      }
+  const getMovieList = async () => {
+    try {
+      const data = await getDocs(moviesCollectionRef);
+      const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setMovieList(filteredData);
+    } catch (e) {
+      console.log(e);
     }
-
+  }
+  useEffect(() => {
     getMovieList();
   }, []);
 
   const onSumbitMovie = async () => {
     try {
       await addDoc(moviesCollectionRef, { title: newMovieTitle, releaseDate: newReleaseDate, receivedAnOskar: isNewMovieOskar });
+      getMovieList();
     } catch (e) {
       console.log(e);
     }
   }
 
   return (
-    <h1>
-      <Auth />
+    <>
+      <h1>
+        <Auth />
 
+      </h1>
       <div>
         <input placeholder='Movie title' onChange={(e) => setNewMovieTitle(e.target.value)} />
         <input placeholder='Release date' type='number' onChange={(e) => setNewReleaseDate(Number(e.target.value))} />
@@ -61,7 +63,7 @@ function App() {
           </div>
         ))}
       </div>
-    </h1>
+    </>
   );
 }
 
