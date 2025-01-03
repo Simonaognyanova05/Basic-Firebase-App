@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Auth } from './components/auth.js';
-import { db } from './config/firebase.js';
+import { auth, db } from './config/firebase.js';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 
@@ -43,7 +43,12 @@ function App() {
 
   const onSumbitMovie = async () => {
     try {
-      await addDoc(moviesCollectionRef, { title: newMovieTitle, releaseDate: newReleaseDate, receivedAnOskar: isNewMovieOskar });
+      await addDoc(moviesCollectionRef, { 
+        title: newMovieTitle, 
+        releaseDate: newReleaseDate, 
+        receivedAnOskar: isNewMovieOskar,
+        userId: auth?.currentUser?.uid, 
+      });
 
     } catch (e) {
       console.log(e);
